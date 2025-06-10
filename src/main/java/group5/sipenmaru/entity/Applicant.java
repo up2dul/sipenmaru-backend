@@ -16,8 +16,8 @@ import java.util.Date;
 @Table(name = "applicants")
 public class Applicant {
     @Id
-    @Column(unique = true, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -26,7 +26,7 @@ public class Applicant {
     @Column(name = "registration_code")
     private String registrationCode;
 
-    @Column(name = "payment_stats")
+    @Column(name = "payment_status")
     private String paymentStatus;
 
     @Column(name = "selection_status")

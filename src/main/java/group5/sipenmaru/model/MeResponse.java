@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class MeResponse {
-    private String id;
+    private Long id;
 
     private String fullName;
 

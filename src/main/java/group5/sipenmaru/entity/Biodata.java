@@ -16,8 +16,8 @@ import java.util.Date;
 @Table(name = "biodata")
 public class Biodata {
     @Id
-    @Column(unique = true, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "applicant_id", referencedColumnName = "id")

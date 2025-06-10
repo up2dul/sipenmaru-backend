@@ -15,7 +15,7 @@
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Registration successful"
 }
@@ -37,13 +37,7 @@
 {
   "data": {
     "access_token": "jwt-token",
-    "refresh_token": "jwt-token",
-    "user": {
-      "id": "uuid",
-      "full_name": "string",
-      "email": "string",
-      "role": "user|admin"
-    }
+    "refresh_token": "jwt-token"
   },
   "success": true,
   "message": "Login successful"
@@ -60,7 +54,7 @@
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Logout successful"
 }
@@ -114,9 +108,9 @@
 > - Semua endpoint autentikasi menggunakan format response:
 >   ```json
 >   {
->     "data": {},
->     "success": true/false,
->     "message": "..."
+>     "data": {}|"OK",
+>     "success": true,
+>     "message": "Success message"
 >   }
 >   ```
 > - Untuk error, gunakan:

@@ -36,8 +36,8 @@
 ```json
 {
   "data": {
-    "access_token": "jwt-token",
-    "refresh_token": "jwt-token"
+    "token": "jwt-token",
+    "expired_at": 1718102400000
   },
   "success": true,
   "message": "Login successful"
@@ -72,8 +72,8 @@
 ```json
 {
   "data": {
-    "access_token": "jwt-token",
-    "refresh_token": "jwt-token"
+    "token": "jwt-token",
+    "expired_at": 1718102400000
   },
   "success": true,
   "message": "Token refreshed successfully"

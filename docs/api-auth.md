@@ -92,10 +92,10 @@
 ```json
 {
   "data": {
-    "id": "uuid",
+    "id": 123,
     "full_name": "string",
     "email": "string",
-    "role": "user|admin"
+    "role": "APPLICANT|ADMIN"
   },
   "success": true,
   "message": "Profile fetched successfully"

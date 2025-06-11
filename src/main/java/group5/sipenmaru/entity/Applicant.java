@@ -8,6 +8,9 @@ import lombok.Setter;
 
 import java.util.Date;
 
+import group5.sipenmaru.entity.enums.PaymentStatus;
+import group5.sipenmaru.entity.enums.SelectionStatus;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -27,10 +30,12 @@ public class Applicant {
     private String registrationCode;
 
     @Column(name = "payment_status")
-    private String paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
 
     @Column(name = "selection_status")
-    private String selectionStatus;
+    @Enumerated(EnumType.STRING)
+    private SelectionStatus selectionStatus;
 
     @Column(name = "created_at")
     private Date createdAt;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import group5.sipenmaru.entity.User;
+import group5.sipenmaru.entity.enums.UserRole;
 import group5.sipenmaru.model.LoginUserRequest;
 import group5.sipenmaru.model.MeResponse;
 import group5.sipenmaru.model.RegisterUserRequest;
@@ -38,7 +39,7 @@ public class AuthService {
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
-        user.setRole("APPLICANT");
+        user.setRole(UserRole.APPLICANT);
         userRepository.save(user);
     }
 
@@ -85,7 +86,7 @@ public class AuthService {
                 .id(user.getId())
                 .fullName(user.getFullName())
                 .email(user.getEmail())
-                .role(user.getRole())
+                .role(user.getRole().name())
                 .build();
     }
 }

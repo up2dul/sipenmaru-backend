@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.Date;
 
+import group5.sipenmaru.entity.enums.SelectionStatus;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +25,8 @@ public class Selection {
     @JoinColumn(name = "applicant_id", referencedColumnName = "id")
     private Applicant applicant;
 
-    private Boolean result;
+    @Enumerated(EnumType.STRING)
+    private SelectionStatus status;
 
     private String note;
 

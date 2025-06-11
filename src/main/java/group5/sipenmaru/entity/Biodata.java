@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.Date;
 
+import group5.sipenmaru.entity.enums.Gender;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,7 +33,8 @@ public class Biodata {
 
     private String address;
 
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(name = "selected_major")
     private String selectedMajor;

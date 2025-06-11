@@ -1,12 +1,21 @@
 package group5.sipenmaru.entity;
 
-import jakarta.persistence.*;
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
 
 import group5.sipenmaru.entity.enums.Gender;
 
@@ -27,6 +36,8 @@ public class Biodata {
 
     @Column(name = "full_name")
     private String fullName;
+
+    private String email;
 
     @Column(name = "birth_date")
     private Date birthDate;

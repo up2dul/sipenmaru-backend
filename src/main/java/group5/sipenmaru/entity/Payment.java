@@ -38,4 +38,6 @@ public class Payment {
 
     @Column(name = "created_at")
     private Date createdAt;
+
+    private String note;
 } 

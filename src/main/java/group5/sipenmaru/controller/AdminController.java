@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import group5.sipenmaru.model.*;
 import group5.sipenmaru.service.AdminService;
 import lombok.RequiredArgsConstructor;
+import group5.sipenmaru.security.AdminOnly;
 
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
+@AdminOnly
 public class AdminController {
     private final AdminService adminService;
 

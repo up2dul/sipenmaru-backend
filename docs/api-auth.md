@@ -62,7 +62,7 @@
 
 ---
 
-## 4. Refresh Token (User & Admin)
+## 4. Refresh Token (User & Admin) (Temporary disabled)
 
 
 - **POST** `/api/auth/refresh`

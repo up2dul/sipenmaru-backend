@@ -23,7 +23,7 @@
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Profile submitted successfully, waiting for admin verification"
 }
@@ -63,19 +63,19 @@
 {
   "data": {
     "profile_submission": {
-      "status": "completed|pending",
+      "status": "PENDING|COMPLETED",
       "note": "string"
     },
     "selection": {
-      "status": "in_progress|passed|failed",
+      "status": "IN_PROGRESS|PASSED|FAILED",
       "note": "string"
     },
     "payment": {
-      "status": "pending|completed",
+      "status": "PENDING|COMPLETED",
       "note": "string"
     },
     "payment_verification": {
-      "status": "in_progress|valid|invalid",
+      "status": "IN_PROGRESS|VALID|INVALID",
       "note": "string"
     }
   },
@@ -123,13 +123,14 @@
 - **Request Body:**
 ```json
 {
+  "payment_method": "string",
   "payment_proof_file_url": "string" // URL hasil upload file terpisah
 }
 ```
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Payment proof uploaded successfully, waiting for verification"
 }

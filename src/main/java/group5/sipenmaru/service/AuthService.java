@@ -2,6 +2,7 @@ package group5.sipenmaru.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -61,21 +62,25 @@ public class AuthService {
     }
 
     @Transactional
-    public void logout(User user) {
+    public void logout(UserDetails userDetails) {
+        User user = userRepository.findById(userDetails.getUsername())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         user.setToken(null);
         user.setTokenExpiredAt(null);
         userRepository.save(user);
     }
 
-    public TokenResponse refreshToken(User user) {
-        String token = jwtService.generateToken(user.getEmail());
+    public TokenResponse refreshToken(UserDetails userDetails) {
+        String token = jwtService.generateToken(userDetails.getUsername());
         return TokenResponse.builder()
                 .token(token)
                 .expiredAt(System.currentTimeMillis() + 86400000) // 24 hours
                 .build();
     }
 
-    public MeResponse getMe(User user) {
+    public MeResponse getMe(UserDetails userDetails) {
+        User user = userRepository.findById(userDetails.getUsername())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         return MeResponse.builder()
                 .id(user.getId())
                 .fullName(user.getFullName())

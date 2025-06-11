@@ -36,7 +36,7 @@ public class RegistrationService {
     public void submitProfile(UserDetails userDetails, SubmitProfileRequest request) {
         validationService.validate(request);
 
-        User user = userRepository.findById(userDetails.getUsername())
+        User user = userRepository.findByEmail(userDetails.getUsername())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         Applicant applicant = applicantRepository.findByUser(user)
@@ -65,7 +65,7 @@ public class RegistrationService {
     }
 
     public ProfileResponse getProfile(UserDetails userDetails) {
-        User user = userRepository.findById(userDetails.getUsername())
+        User user = userRepository.findByEmail(userDetails.getUsername())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         Applicant applicant = applicantRepository.findByUser(user)
@@ -86,7 +86,7 @@ public class RegistrationService {
     }
 
     public RegistrationStatusResponse getStatus(UserDetails userDetails) {
-        User user = userRepository.findById(userDetails.getUsername())
+        User user = userRepository.findByEmail(userDetails.getUsername())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         Applicant applicant = applicantRepository.findByUser(user)

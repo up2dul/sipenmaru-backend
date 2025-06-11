@@ -1,7 +1,9 @@
 package group5.sipenmaru.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +22,14 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public WebResponse<String> register(@RequestBody RegisterUserRequest request) {
+    public ResponseEntity<WebResponse<String>> register(@RequestBody RegisterUserRequest request) {
         authService.register(request);
-        return WebResponse.<String>builder()
-                .data("OK")
-                .success(true)
-                .message("User registered successfully")
-                .build();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(WebResponse.<String>builder()
+                        .data("OK")
+                        .success(true)
+                        .message("User registered successfully")
+                        .build());
     }
 
     @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,7 +42,7 @@ public class AuthController {
                 .build();
     }
 
-    @DeleteMapping(path = "/logout", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
     public WebResponse<String> logout(@AuthenticationPrincipal UserDetails userDetails) {
         authService.logout(userDetails);
         return WebResponse.<String>builder()

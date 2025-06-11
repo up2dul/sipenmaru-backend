@@ -1,5 +1,7 @@
 package group5.sipenmaru.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -22,5 +24,6 @@ public class RegisterUserRequest {
 
     @NotBlank
     @Size(min = 1, max = 100)
+    @JsonProperty("full_name")
     private String fullName;
 }

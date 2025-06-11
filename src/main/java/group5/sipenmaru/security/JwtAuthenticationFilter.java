@@ -12,6 +12,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import group5.sipenmaru.repository.UserRepository;
+
 import java.io.IOException;
 
 @Component
@@ -21,6 +23,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(
@@ -43,7 +48,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             
-            if (jwtService.validateToken(jwt)) {
+            // Check if token is valid and matches the one in database
+            if (jwtService.validateToken(jwt) && userRepository.findByEmail(userEmail)
+                    .map(user -> jwt.equals(user.getToken()))
+                    .orElse(false)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,

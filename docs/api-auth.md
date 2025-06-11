@@ -15,7 +15,7 @@
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Registration successful"
 }
@@ -36,14 +36,8 @@
 ```json
 {
   "data": {
-    "access_token": "jwt-token",
-    "refresh_token": "jwt-token",
-    "user": {
-      "id": "uuid",
-      "full_name": "string",
-      "email": "string",
-      "role": "user|admin"
-    }
+    "token": "jwt-token",
+    "expired_at": 1718102400000
   },
   "success": true,
   "message": "Login successful"
@@ -60,7 +54,7 @@
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Logout successful"
 }
@@ -68,7 +62,7 @@
 
 ---
 
-## 4. Refresh Token (User & Admin)
+## 4. Refresh Token (User & Admin) (Temporary disabled)
 
 
 - **POST** `/api/auth/refresh`
@@ -78,8 +72,8 @@
 ```json
 {
   "data": {
-    "access_token": "jwt-token",
-    "refresh_token": "jwt-token"
+    "token": "jwt-token",
+    "expired_at": 1718102400000
   },
   "success": true,
   "message": "Token refreshed successfully"
@@ -98,10 +92,10 @@
 ```json
 {
   "data": {
-    "id": "uuid",
+    "id": 123,
     "full_name": "string",
     "email": "string",
-    "role": "user|admin"
+    "role": "APPLICANT|ADMIN"
   },
   "success": true,
   "message": "Profile fetched successfully"
@@ -114,9 +108,9 @@
 > - Semua endpoint autentikasi menggunakan format response:
 >   ```json
 >   {
->     "data": {},
->     "success": true/false,
->     "message": "..."
+>     "data": {}|"OK",
+>     "success": true,
+>     "message": "Success message"
 >   }
 >   ```
 > - Untuk error, gunakan:

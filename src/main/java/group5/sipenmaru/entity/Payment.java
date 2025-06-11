@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.Date;
 
+import group5.sipenmaru.entity.enums.PaymentStatus;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,8 +18,8 @@ import java.util.Date;
 @Table(name = "payments")
 public class Payment {
     @Id
-    @Column(unique = true, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "applicant_id", referencedColumnName = "id")
@@ -31,8 +33,11 @@ public class Payment {
     @Column(name = "payment_proof_url")
     private String paymentProofUrl;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus status;
 
     @Column(name = "created_at")
     private Date createdAt;
+
+    private String note;
 } 

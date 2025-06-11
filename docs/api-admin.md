@@ -37,18 +37,16 @@
 - **GET** `/api/admin/applicants`
 - **Headers:**
   - `Authorization: Bearer <token>`
-- **Query Params (optional):**
-  - `year`: string (e.g. "2024/2025")
 - **Response:**
 ```json
 {
   "data": [
     {
-      "id": "uuid",
+      "id": 123,
       "full_name": "string",
       "email": "string",
-      "payment_status": "paid|unpaid",
-      "selection_status": "passed|failed|in_progress"
+      "payment_status": "PAID|UNPAID",
+      "selection_status": "PASSED|FAILED|IN_PROGRESS"
     }
     // ...
   ],
@@ -65,7 +63,7 @@
 ```json
 {
   "data": {
-    "id": "uuid",
+    "id": 123,
     "registration_code": "string",
     "full_name": "string",
     "email": "string",
@@ -75,8 +73,8 @@
     "address": "string",
     "registration_file_url": "string",
     "payment_proof_url": "string|null",
-    "payment_status": "paid|unpaid",
-    "selection_status": "passed|failed|in_progress",
+    "payment_status": "PAID|UNPAID",
+    "selection_status": "PASSED|FAILED|IN_PROGRESS",
     "note": "string|null"
   },
   "success": true,
@@ -91,15 +89,15 @@
 - **Request Body:**
 ```json
 {
-  "selection_status": "passed|failed|in_progress",
-  "payment_status": "paid|unpaid",
+  "selection_status": "PASSED|FAILED|IN_PROGRESS",
+  "payment_status": "PAID|UNPAID",
   "note": "string" // optional
 }
 ```
 - **Response:**
 ```json
 {
-  "data": null,
+  "data": "OK",
   "success": true,
   "message": "Applicant status updated successfully"
 }

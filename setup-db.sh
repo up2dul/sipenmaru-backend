@@ -11,51 +11,58 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Function to show usage
-show_usage() {
-    echo -e "${YELLOW}Usage:${NC}"
-    echo -e "  ./setup-db.sh"
-    echo -e "\nDescription:"
-    echo -e "  Creates the database and tables for the application."
-    echo -e "  The database will be seeded automatically when the application starts."
-}
-
 # Check if MySQL is installed
 if ! command_exists mysql; then
     echo -e "${RED}Error: MySQL is not installed. Please install MySQL first.${NC}"
     exit 1
 fi
 
-# Function to run SQL file
-run_sql_file() {
-    local file=$1
-    local description=$2
+# Check if database.sql file exists
+if [ ! -f "database.sql" ]; then
+    echo -e "${RED}Error: database.sql file not found in current directory.${NC}"
+    exit 1
+fi
+
+# Function to run database setup
+run_database_setup() {
+    echo -e "${GREEN}Setting up database...${NC}"
+    echo -e "${YELLOW}Enter MySQL root password (press Enter if no password):${NC}"
     
-    echo -e "${GREEN}Running $description...${NC}"
-    echo -e "${YELLOW}Enter MySQL root password (or 'q' to cancel):${NC}"
-    read -s password
-    if [ "$password" = "q" ]; then
-        echo -e "${YELLOW}Operation cancelled by user${NC}"
-        exit 0
-    fi
-    if mysql -u root -p"$password" < "$file"; then
-        echo -e "${GREEN}Successfully ran $description${NC}"
+    # Use read with -s flag to hide password input
+    read -s -p "" password
+    echo  # Add newline after hidden input
+    
+    # Test MySQL connection with appropriate authentication method
+    if [ -z "$password" ]; then
+        # Empty password - connect without -p flag
+        if ! mysql -u root -e "SELECT 1;" >/dev/null 2>&1; then
+            echo -e "${RED}Error: Failed to connect to MySQL with empty password.${NC}"
+            exit 1
+        fi
+        # Run the database.sql file without password
+        if mysql -u root < "database.sql" 2>/dev/null; then
+            echo -e "${GREEN}Database setup completed successfully!${NC}"
+            echo -e "${YELLOW}Note: The database will be seeded automatically when you start the application.${NC}"
+        else
+            echo -e "${RED}Error: Failed to execute database.sql${NC}"
+            exit 1
+        fi
     else
-        echo -e "${RED}Error running $description${NC}"
-        exit 1
+        # Non-empty password - connect with -p flag
+        if ! mysql -u root -p"$password" -e "SELECT 1;" >/dev/null 2>&1; then
+            echo -e "${RED}Error: Failed to connect to MySQL. Please check your password.${NC}"
+            exit 1
+        fi
+        # Run the database.sql file with password
+        if mysql -u root -p"$password" < "database.sql" 2>/dev/null; then
+            echo -e "${GREEN}Database setup completed successfully!${NC}"
+            echo -e "${YELLOW}Note: The database will be seeded automatically when you start the application.${NC}"
+        else
+            echo -e "${RED}Error: Failed to execute database.sql${NC}"
+            exit 1
+        fi
     fi
 }
 
-# Handle command line arguments
-case "$1" in
-    "help"|"-h"|"--help")
-        show_usage
-        exit 0
-        ;;
-    *)
-        run_sql_file "database.sql" "database setup"
-        ;;
-esac
-
-echo -e "${GREEN}Operation completed successfully!${NC}"
-echo -e "${YELLOW}Note: The database will be seeded automatically when you start the application.${NC}" 
+# Run the database setup
+run_database_setup

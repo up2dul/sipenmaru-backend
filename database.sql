@@ -22,7 +22,7 @@ CREATE TABLE
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     registration_code VARCHAR(20) NOT NULL UNIQUE,
-    payment_status ENUM ('PAID', 'UNPAID') DEFAULT 'UNPAID',
+    payment_status ENUM ('PENDING', 'COMPLETED', 'INVALID') DEFAULT 'PENDING',
     selection_status ENUM ('IN_PROGRESS', 'PASSED', 'FAILED') DEFAULT 'IN_PROGRESS',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (id)

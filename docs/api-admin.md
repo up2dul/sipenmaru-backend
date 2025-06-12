@@ -45,7 +45,7 @@
       "id": 123,
       "full_name": "string",
       "email": "string",
-      "payment_status": "PAID|UNPAID",
+      "payment_status": "PENDING|COMPLETED|INVALID",
       "selection_status": "PASSED|FAILED|IN_PROGRESS"
     }
     // ...
@@ -73,7 +73,7 @@
     "address": "string",
     "registration_file_url": "string",
     "payment_proof_url": "string|null",
-    "payment_status": "PAID|UNPAID",
+    "payment_status": "PENDING|COMPLETED|INVALID",
     "selection_status": "PASSED|FAILED|IN_PROGRESS",
     "note": "string|null"
   },
@@ -90,7 +90,7 @@
 ```json
 {
   "selection_status": "PASSED|FAILED|IN_PROGRESS",
-  "payment_status": "PAID|UNPAID",
+  "payment_status": "PENDING|COMPLETED|INVALID",
   "note": "string" // optional
 }
 ```

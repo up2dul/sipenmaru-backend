@@ -6,10 +6,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import group5.sipenmaru.model.ProfileResponse;
-import group5.sipenmaru.model.RegistrationStatusResponse;
-import group5.sipenmaru.model.SubmitProfileRequest;
-import group5.sipenmaru.model.WebResponse;
+import group5.sipenmaru.model.response.ProfileResponse;
+import group5.sipenmaru.model.response.RegistrationStatusResponse;
+import group5.sipenmaru.model.request.SubmitProfileRequest;
+import group5.sipenmaru.model.response.WebResponse;
 import group5.sipenmaru.service.RegistrationService;
 
 @RestController

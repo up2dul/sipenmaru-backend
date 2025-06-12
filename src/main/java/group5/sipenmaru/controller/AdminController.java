@@ -2,6 +2,11 @@ package group5.sipenmaru.controller;
 
 import java.util.List;
 
+import group5.sipenmaru.model.request.UpdateApplicantStatusRequest;
+import group5.sipenmaru.model.response.ApplicantDetailResponse;
+import group5.sipenmaru.model.response.ApplicantListResponse;
+import group5.sipenmaru.model.response.DashboardResponse;
+import group5.sipenmaru.model.response.WebResponse;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import group5.sipenmaru.model.*;
 import group5.sipenmaru.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import group5.sipenmaru.security.AdminOnly;

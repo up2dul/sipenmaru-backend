@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import group5.sipenmaru.model.PaymentMethodResponse;
-import group5.sipenmaru.model.SubmitPaymentProofRequest;
+import group5.sipenmaru.model.response.PaymentMethodResponse;
+import group5.sipenmaru.model.request.SubmitPaymentProofRequest;
 import group5.sipenmaru.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 

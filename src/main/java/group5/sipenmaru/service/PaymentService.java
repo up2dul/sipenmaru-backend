@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import group5.sipenmaru.model.PaymentMethodResponse;
-import group5.sipenmaru.model.SubmitPaymentProofRequest;
+import group5.sipenmaru.model.response.PaymentMethodResponse;
+import group5.sipenmaru.model.request.SubmitPaymentProofRequest;
 import lombok.RequiredArgsConstructor;
 
 @Service

@@ -1,6 +1,6 @@
 package group5.sipenmaru.controller;
 
-import group5.sipenmaru.model.WebResponse;
+import group5.sipenmaru.model.response.WebResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;

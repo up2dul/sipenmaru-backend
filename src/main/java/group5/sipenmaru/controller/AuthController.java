@@ -8,11 +8,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import group5.sipenmaru.model.LoginUserRequest;
-import group5.sipenmaru.model.MeResponse;
-import group5.sipenmaru.model.RegisterUserRequest;
-import group5.sipenmaru.model.TokenResponse;
-import group5.sipenmaru.model.WebResponse;
+import group5.sipenmaru.model.request.LoginUserRequest;
+import group5.sipenmaru.model.response.MeResponse;
+import group5.sipenmaru.model.request.RegisterUserRequest;
+import group5.sipenmaru.model.response.TokenResponse;
+import group5.sipenmaru.model.response.WebResponse;
 import group5.sipenmaru.service.AuthService;
 
 @RestController

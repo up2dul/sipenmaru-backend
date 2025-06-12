@@ -1,7 +1,7 @@
 package group5.sipenmaru.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import group5.sipenmaru.model.WebResponse;
+import group5.sipenmaru.model.response.WebResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -2,17 +2,16 @@ package group5.sipenmaru.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import group5.sipenmaru.entity.User;
 import group5.sipenmaru.entity.enums.UserRole;
-import group5.sipenmaru.model.LoginUserRequest;
-import group5.sipenmaru.model.MeResponse;
-import group5.sipenmaru.model.RegisterUserRequest;
-import group5.sipenmaru.model.TokenResponse;
+import group5.sipenmaru.model.request.LoginUserRequest;
+import group5.sipenmaru.model.response.MeResponse;
+import group5.sipenmaru.model.request.RegisterUserRequest;
+import group5.sipenmaru.model.response.TokenResponse;
 import group5.sipenmaru.repository.UserRepository;
 import group5.sipenmaru.security.BCrypt;
 import group5.sipenmaru.security.JwtConfig;

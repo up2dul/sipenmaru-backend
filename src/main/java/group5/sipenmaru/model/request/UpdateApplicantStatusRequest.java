@@ -1,4 +1,4 @@
-package group5.sipenmaru.model;
+package group5.sipenmaru.model.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

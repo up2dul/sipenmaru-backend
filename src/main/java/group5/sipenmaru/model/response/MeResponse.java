@@ -1,4 +1,4 @@
-package group5.sipenmaru.model;
+package group5.sipenmaru.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ApplicantListResponse {
+public class MeResponse {
     private Long id;
 
     @JsonProperty("full_name")
@@ -19,9 +19,5 @@ public class ApplicantListResponse {
 
     private String email;
 
-    @JsonProperty("payment_status")
-    private String paymentStatus;
-
-    @JsonProperty("selection_status")
-    private String selectionStatus;
-} 
+    private String role;
+}

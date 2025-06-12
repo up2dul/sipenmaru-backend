@@ -1,4 +1,4 @@
-package group5.sipenmaru.model;
+package group5.sipenmaru.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,6 @@
-package group5.sipenmaru.model;
+package group5.sipenmaru.model.request;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginUserRequest {
+public class RegisterUserRequest {
     @NotBlank
     @Size(min = 1, max = 100)
     private String email;
@@ -19,4 +21,9 @@ public class LoginUserRequest {
     @NotBlank
     @Size(min = 1, max = 100)
     private String password;
+
+    @NotBlank
+    @Size(min = 1, max = 100)
+    @JsonProperty("full_name")
+    private String fullName;
 }

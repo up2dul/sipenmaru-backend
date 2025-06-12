@@ -1,4 +1,4 @@
-package group5.sipenmaru.model;
+package group5.sipenmaru.model.response;
 
 import java.util.List;
 

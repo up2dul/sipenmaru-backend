@@ -18,3 +18,7 @@
 - [Admin](docs/api-admin.md)
 - [Applicant](docs/api-applicant.md)
 - [Authentication](docs/api-auth.md)
+
+## 🟠 Postman Collection
+
+- [Sipenmaru API](https://www.postman.com/lively-zodiac-424440/workspace/sipenmaru)

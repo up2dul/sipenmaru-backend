@@ -11,4 +11,5 @@ import group5.sipenmaru.entity.User;
 @Repository
 public interface ApplicantRepository extends JpaRepository<Applicant, Long> {
     Optional<Applicant> findByUser(User user);
+    Optional<Applicant> findByUserEmail(String email);
 } 

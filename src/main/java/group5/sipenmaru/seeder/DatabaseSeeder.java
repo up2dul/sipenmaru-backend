@@ -23,6 +23,8 @@ import java.util.Date;
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
     private final String SEED_PASSWORD = "user123";
+    private final String DIPLOMA_FILE_URL = "https://62jwko0ktv.ufs.sh/f/MIGJol47OUNnpWSZW1lUBGgcwLi4XWmJ9IPtkQzOK1x80o5b";
+    private final String PAYMENT_PROOF_URL = "https://62jwko0ktv.ufs.sh/f/MIGJol47OUNnMzX63h47OUNnrpGsce0SEqKCgtzBuifhyk9X";
 
     @Autowired
     private UserRepository userRepository;
@@ -52,12 +54,12 @@ public class DatabaseSeeder implements CommandLineRunner {
         userRepository.save(admin);
 
         // Create applicant users
-        User doni = createUser("Doni Rubiagatra", "doni@sipenmaru.com", SEED_PASSWORD);
-        User zain = createUser("Zain Fathoni", "zain@sipenmaru.com", SEED_PASSWORD);
-        User ariya = createUser("Ariya Hidayat", "ariya@sipenmaru.com", SEED_PASSWORD);
-        User listiarso = createUser("Listiarso Wastuargo", "listiarso@sipenmaru.com", SEED_PASSWORD);
-        User qassandra = createUser("Qassandra Chaidir", "qassandra@sipenmaru.com", SEED_PASSWORD);
-        User imre = createUser("Imre Nagi", "imre@sipenmaru.com", SEED_PASSWORD);
+        User doni = createUser("Doni Rubiagatra", "doni@gmail.com", SEED_PASSWORD);
+        User zain = createUser("Zain Fathoni", "zain@gmail.com", SEED_PASSWORD);
+        User ariya = createUser("Ariya Hidayat", "ariya@gmail.com", SEED_PASSWORD);
+        User listiarso = createUser("Listiarso Wastuargo", "gogo@gmail.com", SEED_PASSWORD);
+        User qassandra = createUser("Qassandra Chaidir", "qassandra@gmail.com", SEED_PASSWORD);
+        User imre = createUser("Imre Nagi", "imre@gmail.com", SEED_PASSWORD);
 
         // Create applicants
         Applicant doniApplicant = createApplicant(doni, "REG-2025-001", PaymentStatus.COMPLETED, SelectionStatus.PASSED);
@@ -76,8 +78,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         createBiodata(imreApplicant, "Imre Nagi", "imre@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.MALE, "Sistem Informasi");
 
         // Create payments
-        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/doni-proof.jpg", PaymentStatus.COMPLETED);
-        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/zain-proof.jpg", PaymentStatus.COMPLETED);
+        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.COMPLETED);
+        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.COMPLETED);
         createPayment(ariyaApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
         createPayment(listiarsoApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
         createPayment(qassandraApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
@@ -112,6 +114,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         biodata.setAddress(address);
         biodata.setGender(gender);
         biodata.setSelectedMajor(selectedMajor);
+        biodata.setDiplomaFileUrl(DIPLOMA_FILE_URL);
         biodata.setCreatedAt(new Date());
         biodataRepository.save(biodata);
     }

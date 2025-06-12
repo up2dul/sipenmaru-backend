@@ -55,21 +55,33 @@ public class DatabaseSeeder implements CommandLineRunner {
         User doni = createUser("Doni Rubiagatra", "doni@sipenmaru.com", SEED_PASSWORD);
         User zain = createUser("Zain Fathoni", "zain@sipenmaru.com", SEED_PASSWORD);
         User ariya = createUser("Ariya Hidayat", "ariya@sipenmaru.com", SEED_PASSWORD);
+        User listiarso = createUser("Listiarso Wastuargo", "listiarso@sipenmaru.com", SEED_PASSWORD);
+        User qassandra = createUser("Qassandra Chaidir", "qassandra@sipenmaru.com", SEED_PASSWORD);
+        User imre = createUser("Imre Nagi", "imre@sipenmaru.com", SEED_PASSWORD);
 
         // Create applicants
-        Applicant doniApplicant = createApplicant(doni, "REG-2024-001", PaymentStatus.PAID, SelectionStatus.PASSED);
-        Applicant zainApplicant = createApplicant(zain, "REG-2024-002", PaymentStatus.PAID, SelectionStatus.IN_PROGRESS);
-        Applicant ariyaApplicant = createApplicant(ariya, "REG-2024-003", PaymentStatus.UNPAID, SelectionStatus.IN_PROGRESS);
+        Applicant doniApplicant = createApplicant(doni, "REG-2025-001", PaymentStatus.COMPLETED, SelectionStatus.PASSED);
+        Applicant zainApplicant = createApplicant(zain, "REG-2025-002", PaymentStatus.COMPLETED, SelectionStatus.IN_PROGRESS);
+        Applicant ariyaApplicant = createApplicant(ariya, "REG-2025-003", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
+        Applicant listiarsoApplicant = createApplicant(listiarso, "REG-2025-004", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
+        Applicant qassandraApplicant = createApplicant(qassandra, "REG-2025-005", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
+        Applicant imreApplicant = createApplicant(imre, "REG-2025-006", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
 
         // Create biodata
-        createBiodata(doniApplicant, "Doni Rubiagatra", "doni@sipenmaru.com", "2000-05-15", "Jl. Merdeka No. 123, Jakarta", Gender.MALE, "Teknik Informatika");
-        createBiodata(zainApplicant, "Zain Fathoni", "zain@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.FEMALE, "Sistem Informasi");
+        createBiodata(doniApplicant, "Doni Rubiagatra", "doni@sipenmaru.com", "2000-05-15", "Jl. Merdeka No. 123, Jakarta", Gender.MALE, "Teknik Elektro");
+        createBiodata(zainApplicant, "Zain Fathoni", "zain@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.MALE, "Sistem Informasi");
         createBiodata(ariyaApplicant, "Ariya Hidayat", "ariya@sipenmaru.com", "2000-11-10", "Jl. Gatot Subroto No. 78, Surabaya", Gender.MALE, "Teknik Komputer");
+        createBiodata(listiarsoApplicant, "Listiarso Wastuargo", "listiarso@sipenmaru.com", "2000-11-10", "Jl. Gatot Subroto No. 78, Surabaya", Gender.MALE, "Teknik Komputer");
+        createBiodata(qassandraApplicant, "Qassandra Chaidir", "qassandra@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.FEMALE, "Matematika");
+        createBiodata(imreApplicant, "Imre Nagi", "imre@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.MALE, "Sistem Informasi");
 
         // Create payments
-        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/doni-proof.jpg", PaymentStatus.PAID);
-        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/zain-proof.jpg", PaymentStatus.PAID);
-        createPayment(ariyaApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.UNPAID);
+        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/doni-proof.jpg", PaymentStatus.COMPLETED);
+        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", "https://example.com/payments/zain-proof.jpg", PaymentStatus.COMPLETED);
+        createPayment(ariyaApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
+        createPayment(listiarsoApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
+        createPayment(qassandraApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
+        createPayment(imreApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
     }
 
     private User createUser(String fullName, String email, String password) {

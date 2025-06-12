@@ -64,7 +64,6 @@
 
 ## 4. Refresh Token (User & Admin) (Temporary disabled)
 
-
 - **POST** `/api/auth/refresh`
 - **Headers:**
   - `Authorization: Bearer <token>`
@@ -105,7 +104,7 @@
 ---
 
 > **Notes:**
-> - Semua endpoint autentikasi menggunakan format response:
+> - Response errors follow the standard format:
 >   ```json
 >   {
 >     "data": {}|"OK",
@@ -113,7 +112,7 @@
 >     "message": "Success message"
 >   }
 >   ```
-> - Untuk error, gunakan:
+> - For errors:
 >   ```json
 >   {
 >     "data": null,

@@ -17,7 +17,7 @@
   "birth_date": "YYYY-MM-DD",
   "selected_major": "string",
   "address": "string",
-  "diploma_file_url": "string" // URL hasil upload file terpisah
+  "diploma_file_url": "string"
 }
 ```
 - **Response:**
@@ -71,11 +71,11 @@
       "note": "string"
     },
     "payment": {
-      "status": "PENDING|COMPLETED",
+      "status": "PENDING|COMPLETED|INVALID",
       "note": "string"
     },
     "payment_verification": {
-      "status": "IN_PROGRESS|VALID|INVALID",
+      "status": "PENDING|COMPLETED|INVALID",
       "note": "string"
     }
   },
@@ -124,7 +124,7 @@
 ```json
 {
   "payment_method": "string",
-  "payment_proof_file_url": "string" // URL hasil upload file terpisah
+  "payment_proof_file_url": "string"
 }
 ```
 - **Response:**
@@ -139,9 +139,9 @@
 ---
 
 > **Notes:**
-> - Semua endpoint yang membutuhkan autentikasi harus mengirimkan header `Authorization: Bearer <token>` hasil login.
-> - Untuk upload file (ijazah, payment proof), lakukan upload ke endpoint storage terpisah, lalu gunakan URL-nya pada body JSON.
-> - Response error mengikuti format standar:
+> - All endpoints that require authentication must send the `Authorization header: Bearer <token>` from the login result.
+> - For file uploads (diploma, payment proof), upload to a separate storage endpoint, then use its URL in the JSON body.
+> - Response errors follow the standard format:
 > ```json
 > {
 >   "data": null,

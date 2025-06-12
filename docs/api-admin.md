@@ -106,8 +106,8 @@
 ---
 
 > **Notes:**
-> - Semua endpoint yang membutuhkan autentikasi harus mengirimkan header `Authorization: Bearer <token>` hasil login admin.
-> - Response error mengikuti format standar:
+> - All endpoints that require authentication must send the `Authorization header: Bearer <token>` from the login result.
+> - Response errors follow the standard format:
 > ```json
 > {
 >   "data": null,

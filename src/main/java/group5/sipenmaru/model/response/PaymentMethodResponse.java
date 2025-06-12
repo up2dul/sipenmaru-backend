@@ -10,18 +10,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentMethodResponse {
     private Double amount;
 
     private List<PaymentMethod> methods;
 
     @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class PaymentMethod {
         private String name;
 

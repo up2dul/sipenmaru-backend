@@ -8,9 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RegistrationStatusResponse {
     @JsonProperty("profile_submission")
     private StatusInfo profileSubmission;
@@ -23,9 +23,9 @@ public class RegistrationStatusResponse {
     private StatusInfo paymentVerification;
 
     @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class StatusInfo {
         private String status;
         private String note;

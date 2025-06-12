@@ -1,6 +1,7 @@
 package group5.sipenmaru.entity.enums;
 
 public enum PaymentStatus {
-    PAID,
-    UNPAID
+    PENDING,
+    COMPLETED,
+    INVALID
 } 

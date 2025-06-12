@@ -36,11 +36,9 @@ public class AuthService {
     public void register(RegisterUserRequest request) {
         validationService.validate(request);
 
-        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already registered");
-        }
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already registered"));
 
-        User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
         user.setRole(UserRole.APPLICANT);
@@ -55,8 +53,7 @@ public class AuthService {
         validationService.validate(request);
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not registered"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not registered"));
 
         if (!BCrypt.checkpw(request.getPassword(), user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email or password is invalid");

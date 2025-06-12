@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,4 +41,7 @@ public class User {
 
     @Column(name = "token_expired_at")
     private Long tokenExpiredAt;
+
+    @OneToOne(mappedBy = "user")
+    private Applicant applicant;
 }

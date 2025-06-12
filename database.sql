@@ -22,7 +22,7 @@ CREATE TABLE
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     registration_code VARCHAR(20) NOT NULL UNIQUE,
-    payment_status ENUM ('PAID', 'UNPAID') DEFAULT 'UNPAID',
+    payment_status ENUM ('PENDING', 'COMPLETED', 'INVALID') DEFAULT 'PENDING',
     selection_status ENUM ('IN_PROGRESS', 'PASSED', 'FAILED') DEFAULT 'IN_PROGRESS',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (id)
@@ -34,6 +34,7 @@ CREATE TABLE
     id INT AUTO_INCREMENT PRIMARY KEY,
     applicant_id INT NOT NULL,
     full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     birth_date DATE NOT NULL,
     address VARCHAR(255) NOT NULL,
     gender ENUM ('MALE', 'FEMALE') NOT NULL,
@@ -51,6 +52,7 @@ CREATE TABLE
     amount DOUBLE NOT NULL,
     payment_method VARCHAR(100) NOT NULL,
     payment_proof_url VARCHAR(255),
+    note VARCHAR(255),
     status ENUM ('PENDING', 'COMPLETED', 'INVALID') DEFAULT 'PENDING',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (applicant_id) REFERENCES applicants (id)
@@ -62,6 +64,7 @@ CREATE TABLE
     id INT AUTO_INCREMENT PRIMARY KEY,
     applicant_id INT NOT NULL,
     result BOOLEAN,
+    status ENUM ('IN_PROGRESS', 'PASSED', 'FAILED') DEFAULT 'IN_PROGRESS',
     note VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (applicant_id) REFERENCES applicants (id)

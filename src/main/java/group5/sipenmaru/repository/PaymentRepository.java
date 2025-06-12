@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 import group5.sipenmaru.entity.Applicant;
 import group5.sipenmaru.entity.Payment;
 
+
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
+    Optional<Payment> findByApplicantId(Long applicantId);
+    
     Optional<Payment> findByApplicant(Applicant applicant);
-} 
+}

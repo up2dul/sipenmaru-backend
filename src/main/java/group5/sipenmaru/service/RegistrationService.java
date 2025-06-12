@@ -1,5 +1,8 @@
 package group5.sipenmaru.service;
 
+import java.util.Date;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +12,8 @@ import org.springframework.web.server.ResponseStatusException;
 import group5.sipenmaru.entity.Applicant;
 import group5.sipenmaru.entity.Biodata;
 import group5.sipenmaru.entity.User;
+import group5.sipenmaru.entity.enums.PaymentStatus;
+import group5.sipenmaru.entity.enums.SelectionStatus;
 import group5.sipenmaru.entity.enums.SubmissionStatus;
 import group5.sipenmaru.model.response.ProfileResponse;
 import group5.sipenmaru.model.response.RegistrationStatusResponse;
@@ -43,6 +48,10 @@ public class RegistrationService {
             .orElseGet(() -> {
                 Applicant newApplicant = new Applicant();
                 newApplicant.setUser(user);
+                newApplicant.setRegistrationCode(UUID.randomUUID().toString().substring(0, 8));
+                newApplicant.setPaymentStatus(PaymentStatus.PENDING);
+                newApplicant.setSelectionStatus(SelectionStatus.IN_PROGRESS);
+                newApplicant.setCreatedAt(new Date());
                 return applicantRepository.save(newApplicant);
             });
 

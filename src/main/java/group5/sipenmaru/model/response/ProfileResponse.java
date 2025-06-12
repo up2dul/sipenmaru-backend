@@ -22,7 +22,7 @@ public class ProfileResponse {
 
     private Gender gender;
 
-    @JsonProperty("full_name")
+    @JsonProperty("birth_date")
     private Date birthDate;
 
     @JsonProperty("selected_major")

@@ -1,0 +1,7 @@
+FROM mysql:8.0
+
+# Copy database.sql directly to the initialization directory
+COPY database.sql /docker-entrypoint-initdb.d/
+
+# The SQL file will be automatically executed when the container starts
+# because it's in /docker-entrypoint-initdb.d/ 

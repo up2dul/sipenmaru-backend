@@ -21,7 +21,9 @@ services:
       retries: 5
 
   app:
-    image: sipenmaru:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: sipenmaru-app
     restart: unless-stopped
     depends_on:

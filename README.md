@@ -1,22 +1,24 @@
-# 🎓 Sipenmaru API
+<div align="center">
+  <h1>🎓 Sipenmaru API</h1>
+</div>
 
 > ℹ️ Sipenmaru means "Sistem Pendaftaran Mahasiswa Baru" in Indonesian.
+
 > 🌐 Shipped on [Azure](https://azure.com).
 
 ## Table of Contents
 
-- [🎓 Sipenmaru API](#-sipenmaru-api)
-  - [Table of Contents](#table-of-contents)
-  - [💻 Tech Stack](#-tech-stack)
-  - [📚 API Documentation/Specification](#-api-documentationspecification)
-  - [🟠 Postman Collection](#-postman-collection)
-  - [Pre-requisites](#pre-requisites)
-  - [Setup Instructions](#setup-instructions)
-    - [1. Clone the Repository](#1-clone-the-repository)
-    - [2. Run the `setup-db.sh` script for setting up the database](#2-run-the-setup-dbsh-script-for-setting-up-the-database)
-    - [3. Update some `application.properties` values with your own](#3-update-some-applicationproperties-values-with-your-own)
-    - [4. Build and run the application](#4-build-and-run-the-application)
-    - [5. Access the API](#5-access-the-api)
+- [Table of Contents](#table-of-contents)
+- [💻 Tech Stack](#-tech-stack)
+- [📚 API Documentation/Specification](#-api-documentationspecification)
+- [🟠 Postman Collection](#-postman-collection)
+- [Pre-requisites](#pre-requisites)
+- [Setup Instructions](#setup-instructions)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Run the `setup-db.sh` script for setting up the database](#2-run-the-setup-dbsh-script-for-setting-up-the-database)
+  - [3. Update some `application.properties` values with your own](#3-update-some-applicationproperties-values-with-your-own)
+  - [4. Build and run the application](#4-build-and-run-the-application)
+  - [5. Access the API](#5-access-the-api)
 
 ## 💻 Tech Stack
 

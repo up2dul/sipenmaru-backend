@@ -1,8 +1,15 @@
-name: Deploy
+name: 🌍 Deploy
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - ".github/**"
+      - "!.github/workflows/deploy.yaml"
+      - ".gitignore"
+      - ".gitattributes"
+      - "docs/**"
 
 jobs:
   deploy:

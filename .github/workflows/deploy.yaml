@@ -14,5 +14,4 @@ jobs:
     - name: Build and Deploy
       run: |
         cd ${{ secrets.APP_DIR }}
-        docker compose down -v
-        docker compose up -d --build
+        bash deploy.sh

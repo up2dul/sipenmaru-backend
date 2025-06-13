@@ -1,7 +1,3 @@
-DROP DATABASE IF EXISTS sipenmaru;
-
-CREATE DATABASE sipenmaru;
-
 USE sipenmaru;
 
 -- USERS TABLE (abstract, untuk user dan admin)

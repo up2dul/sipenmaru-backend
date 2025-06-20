@@ -70,18 +70,17 @@ bash setup-db.sh
 spring.datasource.username=YOUR_MYSQL_USERNAME
 spring.datasource.password=YOUR_MYSQL_PASSWORD
 spring.datasource.url=jdbc:mysql://localhost:3306/sipenmaru
-jwt.secret=YOUR_JWT_SECRET
 ```
 You don't need to update the other properties.
 
 ### 4. Build and run the application
 
 ```bash
-mvn clean package
+./mvnw clean package
 
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 ### 5. Access the API
 
-Now you can access the API at `http://localhost:8080/api/`. Check the [API Documentation/Specification](#-api-documentationspecification) or [Postman Collection](#-postman-collection) for more information about the endpoints.
+Now you can access the RESTful API at `http://localhost:8080/api/`. Check the [API Documentation/Specification](#-api-documentationspecification) or [Postman Collection](#-postman-collection) for more information about the endpoints.

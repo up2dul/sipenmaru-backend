@@ -2,7 +2,7 @@
 
 ---
 
-## 1. Register (User Only)
+## 1. Register (Applicant Only)
 - **POST** `/api/auth/register`
 - **Request Body:**
 ```json
@@ -23,7 +23,7 @@
 
 ---
 
-## 2. Login (User & Admin)
+## 2. Login (Applicant & Admin)
 - **POST** `/api/auth/login`
 - **Request Body:**
 ```json
@@ -46,7 +46,7 @@
 
 ---
 
-## 3. Logout (User & Admin)
+## 3. Logout (Applicant & Admin)
 
 - **POST** `/api/auth/logout`
 - **Headers:**
@@ -62,26 +62,7 @@
 
 ---
 
-## 4. Refresh Token (User & Admin) (Temporary disabled)
-
-- **POST** `/api/auth/refresh`
-- **Headers:**
-  - `Authorization: Bearer <token>`
-- **Response:**
-```json
-{
-  "data": {
-    "token": "jwt-token",
-    "expired_at": 1718102400000
-  },
-  "success": true,
-  "message": "Token refreshed successfully"
-}
-```
-
----
-
-## 5. Misc
+## 4. Misc
 
 ### 4.1. Get Profile
 - **GET** `/api/auth/me`

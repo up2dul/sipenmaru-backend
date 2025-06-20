@@ -1,8 +1,8 @@
-# API Spec – User (Applicant)
+# API Spec – Applicant
 
 ---
 
-## 1. Registration Data
+## 1. Registration Data (Biodata)
 
 ### 1.1. Submit Registration Data
 - **POST** `/api/registration/profile`

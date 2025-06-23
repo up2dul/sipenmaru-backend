@@ -114,10 +114,6 @@ public class RegistrationService {
                 .status(applicant.getPaymentStatus().toString())
                 .note(applicant.getPayment() != null ? applicant.getPayment().getNote() : null)
                 .build())
-            .paymentVerification(RegistrationStatusResponse.StatusInfo.builder()
-                .status(applicant.getPayment() != null ? applicant.getPayment().getStatus().toString() : SubmissionStatus.PENDING.toString())
-                .note(applicant.getPayment() != null ? applicant.getPayment().getNote() : null)
-                .build())
             .build();
     }
 }

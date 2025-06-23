@@ -22,7 +22,7 @@ public class Payment {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "applicant_id", referencedColumnName = "id")
+    @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 
     private Double amount;
@@ -36,8 +36,14 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 
+    private String note;
+
+    @Column(name = "verified_at")
+    private Date verifiedAt;
+
+    @Column(name = "verified_by")
+    private String verifiedBy;
+
     @Column(name = "created_at")
     private Date createdAt;
-
-    private String note;
-} 
+}

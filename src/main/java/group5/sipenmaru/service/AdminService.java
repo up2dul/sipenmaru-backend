@@ -158,12 +158,17 @@ public class AdminService {
 
         // Update or create selection record with note
         Selection selection = selectionRepository.findByApplicant(applicant)
-            .orElse(new Selection());
-        selection.setApplicant(applicant);
+            .orElseGet(() -> {
+                Selection newSelection = new Selection();
+                newSelection.setApplicant(applicant);
+                newSelection.setCreatedAt(new Date()); // Add creation date if needed
+                return newSelection;
+            });
+        
         selection.setStatus(SelectionStatus.valueOf(request.getSelectionStatus()));
         selection.setNote(request.getNote());
         selectionRepository.save(selection);
 
         applicantRepository.save(applicant);
     }
-} 
+}

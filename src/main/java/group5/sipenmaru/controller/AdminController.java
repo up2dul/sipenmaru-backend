@@ -3,6 +3,7 @@ package group5.sipenmaru.controller;
 import java.util.List;
 
 import group5.sipenmaru.model.request.UpdateApplicantStatusRequest;
+import group5.sipenmaru.model.request.VerifyPaymentRequest;
 import group5.sipenmaru.model.response.ApplicantDetailResponse;
 import group5.sipenmaru.model.response.ApplicantListResponse;
 import group5.sipenmaru.model.response.DashboardResponse;
@@ -74,4 +75,19 @@ public class AdminController {
                 .message("Applicant status updated successfully")
                 .build();
     }
-} 
+
+    @PutMapping(path = "/applicants/{id}/verify-payment", 
+        consumes = MediaType.APPLICATION_JSON_VALUE, 
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public WebResponse<String> verifyPayment(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @PathVariable("id") Long id,
+            @RequestBody VerifyPaymentRequest request) {
+        adminService.verifyPayment(id, request, userDetails);
+        return WebResponse.<String>builder()
+                .data("OK")
+                .success(true)
+                .message("Payment verification completed")
+                .build();
+    }
+}

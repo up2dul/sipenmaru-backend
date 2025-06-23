@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS sipenmaru;
+
 USE sipenmaru;
 
 -- USERS TABLE (abstract, untuk user dan admin)
@@ -18,7 +20,7 @@ CREATE TABLE
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     registration_code VARCHAR(20) NOT NULL UNIQUE,
-    payment_status ENUM ('PENDING', 'COMPLETED', 'INVALID') DEFAULT 'PENDING',
+    payment_status ENUM ('PENDING', 'PROOF_SUBMITTED', 'VERIFIED', 'REJECTED') DEFAULT 'PENDING',
     selection_status ENUM ('IN_PROGRESS', 'PASSED', 'FAILED') DEFAULT 'IN_PROGRESS',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (id)
@@ -48,8 +50,10 @@ CREATE TABLE
     amount DOUBLE NOT NULL,
     payment_method VARCHAR(100) NOT NULL,
     payment_proof_url VARCHAR(255),
+    status ENUM ('PENDING', 'PROOF_SUBMITTED', 'VERIFIED', 'REJECTED') DEFAULT 'PENDING',
     note VARCHAR(255),
-    status ENUM ('PENDING', 'COMPLETED', 'INVALID') DEFAULT 'PENDING',
+    verified_at TIMESTAMP NULL,
+    verified_by VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (applicant_id) REFERENCES applicants (id)
   ) ENGINE = InnoDB;

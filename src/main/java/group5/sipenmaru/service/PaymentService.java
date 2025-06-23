@@ -86,21 +86,21 @@ public class PaymentService {
             });
 
         // Validate payment status
-        if (payment.getStatus() == PaymentStatus.COMPLETED) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Payment has already been completed");
-        }
+        // if (payment.getStatus() == PaymentStatus.COMPLETED) {
+        //     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Payment has already been completed");
+        // }
 
         // Update payment details
         payment.setPaymentMethod(request.getPaymentMethod());
         payment.setPaymentProofUrl(request.getPaymentProofFileUrl());
-        payment.setStatus(PaymentStatus.PENDING); // Reset to pending for admin verification
+        payment.setStatus(PaymentStatus.PROOF_SUBMITTED);
         payment.setNote("Payment proof submitted, waiting for verification");
 
         // Save payment
         paymentRepository.save(payment);
 
         // Update applicant payment status
-        applicant.setPaymentStatus(PaymentStatus.PENDING);
+        applicant.setPaymentStatus(PaymentStatus.PROOF_SUBMITTED);
         applicantRepository.save(applicant);
     }
 } 

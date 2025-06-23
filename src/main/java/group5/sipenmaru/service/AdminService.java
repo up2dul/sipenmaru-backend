@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,6 +22,7 @@ import group5.sipenmaru.model.response.ApplicantDetailResponse;
 import group5.sipenmaru.model.response.ApplicantListResponse;
 import group5.sipenmaru.model.response.DashboardResponse;
 import group5.sipenmaru.model.request.UpdateApplicantStatusRequest;
+import group5.sipenmaru.model.request.VerifyPaymentRequest;
 import group5.sipenmaru.repository.ApplicantRepository;
 import group5.sipenmaru.repository.BiodataRepository;
 import group5.sipenmaru.repository.PaymentRepository;
@@ -169,6 +171,26 @@ public class AdminService {
         selection.setNote(request.getNote());
         selectionRepository.save(selection);
 
+        applicantRepository.save(applicant);
+    }
+
+    @Transactional
+    public void verifyPayment(Long applicantId, VerifyPaymentRequest request, UserDetails admin) {
+        Applicant applicant = applicantRepository.findById(applicantId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Applicant not found"));
+
+        Payment payment = paymentRepository.findByApplicantId(applicantId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Payment not found"));
+
+        // Update payment verification status
+        payment.setStatus(PaymentStatus.valueOf(request.getStatus()));
+        payment.setNote(request.getNote());
+        payment.setVerifiedAt(new Date());
+        payment.setVerifiedBy(admin.getUsername());
+        paymentRepository.save(payment);
+
+        // Update applicant payment status
+        applicant.setPaymentStatus(PaymentStatus.valueOf(request.getStatus()));
         applicantRepository.save(applicant);
     }
 }

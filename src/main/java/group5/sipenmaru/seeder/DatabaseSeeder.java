@@ -62,8 +62,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         User imre = createUser("Imre Nagi", "imre@gmail.com", SEED_PASSWORD);
 
         // Create applicants
-        Applicant doniApplicant = createApplicant(doni, "REG-2025-001", PaymentStatus.COMPLETED, SelectionStatus.PASSED);
-        Applicant zainApplicant = createApplicant(zain, "REG-2025-002", PaymentStatus.COMPLETED, SelectionStatus.IN_PROGRESS);
+        Applicant doniApplicant = createApplicant(doni, "REG-2025-001", PaymentStatus.VERIFIED, SelectionStatus.PASSED);
+        Applicant zainApplicant = createApplicant(zain, "REG-2025-002", PaymentStatus.PROOF_SUBMITTED, SelectionStatus.IN_PROGRESS);
         Applicant ariyaApplicant = createApplicant(ariya, "REG-2025-003", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
         Applicant listiarsoApplicant = createApplicant(listiarso, "REG-2025-004", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
         Applicant qassandraApplicant = createApplicant(qassandra, "REG-2025-005", PaymentStatus.PENDING, SelectionStatus.IN_PROGRESS);
@@ -78,8 +78,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         createBiodata(imreApplicant, "Imre Nagi", "imre@sipenmaru.com", "2001-08-20", "Jl. Sudirman No. 45, Bandung", Gender.MALE, "Sistem Informasi");
 
         // Create payments
-        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.COMPLETED);
-        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.COMPLETED);
+        createPayment(doniApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.VERIFIED);
+        createPayment(zainApplicant, 500000.0, "BANK_TRANSFER", PAYMENT_PROOF_URL, PaymentStatus.PROOF_SUBMITTED);
         createPayment(ariyaApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
         createPayment(listiarsoApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);
         createPayment(qassandraApplicant, 500000.0, "BANK_TRANSFER", null, PaymentStatus.PENDING);

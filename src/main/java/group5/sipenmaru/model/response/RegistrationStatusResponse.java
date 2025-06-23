@@ -19,9 +19,6 @@ public class RegistrationStatusResponse {
 
     private StatusInfo payment;
 
-    @JsonProperty("payment_verification")
-    private StatusInfo paymentVerification;
-
     @Data
     @Builder
     @NoArgsConstructor
